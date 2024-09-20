@@ -4,11 +4,12 @@ import styles from './style';
 import ItemComponent from '../../components/Item';
 import {useNavigation} from '@react-navigation/native';
 import {TTodo} from '../../Types/Todo';
-interface ListListToDoScreenViewProps {
+import Navigator from '../../navigation/NavigationService';
+import SCREEN_NAME from '../../navigation/ScreenName';
+interface ListToDoScreenViewProps {
   data: TTodo[];
 }
-const ListToDoScreenView = ({data}: ListListToDoScreenViewProps) => {
-  const navigation = useNavigation();
+const ListToDoScreenView = ({data}: ListToDoScreenViewProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -17,7 +18,9 @@ const ListToDoScreenView = ({data}: ListListToDoScreenViewProps) => {
       <View style={styles.borderBottom}>
         <TouchableOpacity
           style={styles.addBtn}
-          onPress={() => navigation.navigate('AddTaskScreen')}>
+          onPress={() => {
+            Navigator.navigateTo(SCREEN_NAME.MANUAL.ADD_TASK_SCREEN);
+          }}>
           <Text style={[styles.text, styles.fontBtn]}>Add Task</Text>
         </TouchableOpacity>
       </View>
