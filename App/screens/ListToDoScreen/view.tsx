@@ -1,8 +1,7 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import styles from './style';
 import ItemComponent from '../../components/Item';
-import {useNavigation} from '@react-navigation/native';
 import {TTodo} from '../../Types/Todo';
 import Navigator from '../../navigation/NavigationService';
 import SCREEN_NAME from '../../navigation/ScreenName';
@@ -29,13 +28,14 @@ const ListToDoScreenView = ({data}: ListToDoScreenViewProps) => {
         keyExtractor={item => item.id}
         data={data}
         renderItem={({item}) => (
-          <ItemComponent
-            title={item.title}
-            description={item.description}
-            timeCreate={item.createdAt}
-            timeUpdate={item.updatedAt}
-            isDone={item.isDone}
-          />
+          <TouchableOpacity
+            onPress={() =>
+              Navigator.navigateTo(SCREEN_NAME.MANUAL.DETAIL_TASK_SCREEN, {
+                task: item,
+              })
+            }>
+            <ItemComponent item={item} />
+          </TouchableOpacity>
         )}
       />
     </View>

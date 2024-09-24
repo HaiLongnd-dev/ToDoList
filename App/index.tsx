@@ -6,9 +6,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 const Index = () => {
   return (
     // <SafeAreaProvider>
-      <NavigationContainer>
-        <StackScreens />
-      </NavigationContainer>
+    <StackScreens />
     // {/* </SafeAreaProvider> */}
   );
 };

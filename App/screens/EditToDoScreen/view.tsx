@@ -7,24 +7,27 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import styles from './style';
-import {useNavigation} from '@react-navigation/native';
+import {TTodo} from '../../Types/Todo';
+import Navigator from '../../navigation/NavigationService';
+interface ListToDoScreenViewProps {
+  item: TTodo;
+}
+const EditTodoScreenView = ({item}: ListToDoScreenViewProps) => {
+  const [title, setTitle] = useState(item.title);
+  const [description, setDescription] = useState(item.description);
 
-const EditTodoScreenView = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <TouchableOpacity
           onPress={() => {
-            navigation.goBack();
+            Navigator.goBack();
           }}
           style={styles.back}>
           <Text style={[styles.whiteColor, styles.backBtn]}>{`<`}</Text>
         </TouchableOpacity>
         <View style={styles.center}>
-          <Text style={[styles.text, styles.fontBig]}>Add To-Do</Text>
+          <Text style={[styles.text, styles.fontBig]}>Edit To-Do</Text>
         </View>
       </View>
       <View style={styles.content}>
@@ -45,7 +48,7 @@ const EditTodoScreenView = () => {
         />
 
         <TouchableOpacity style={styles.addBtn}>
-          <Text style={[styles.text, styles.fontBtn]}>Add Task</Text>
+          <Text style={[styles.text, styles.fontBtn]}>Confirm Change</Text>
         </TouchableOpacity>
       </View>
     </View>
