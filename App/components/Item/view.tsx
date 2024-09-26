@@ -1,12 +1,12 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import styles from './style';
-import {TTodo} from '../../Types/Todo';
+import {TTask} from '../../Types/Todo';
 import Navigator from '../../navigation/NavigationService';
 import SCREEN_NAME from '../../navigation/ScreenName';
 
 export interface ItemComponentViewProps {
-  item: TTodo;
+  item: TTask;
 }
 const ItemComponentView = ({item}: ItemComponentViewProps) => {
   return (

@@ -1,4 +1,4 @@
-export type TTodo = {
+export type TTask = {
   id: string;
   createdAt: string;
   description: string;

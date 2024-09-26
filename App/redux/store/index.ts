@@ -13,10 +13,10 @@ const bindMiddleware = middleware => applyMiddleware(...middleware);
 /**
  * Redux Persist Configuration
  */
-const persistConfig = {
+const persistConfig = { 
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['book'],
+  whitelist: ['task'],
   version: 1,
   stateReconciler: autoMergeLevel2,
 };

@@ -2,11 +2,11 @@ import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import styles from './style';
 import ItemComponent from '../../components/Item';
-import {TTodo} from '../../Types/Todo';
+import {TTask} from '../../Types/Todo';
 import Navigator from '../../navigation/NavigationService';
 import SCREEN_NAME from '../../navigation/ScreenName';
 interface ListToDoScreenViewProps {
-  data: TTodo[];
+  data: TTask[];
 }
 const ListToDoScreenView = ({data}: ListToDoScreenViewProps) => {
   return (

@@ -1,4 +1,4 @@
-import {TTodo} from '../../../Types/Todo';
+import {TTask} from '../../../Types/Todo';
 import {IActionBase} from './actionTypeBase';
 
 export const TodoActionType = {
@@ -8,34 +8,40 @@ export const TodoActionType = {
   GET_LIST: 'TASK/GET_LIST',
   TOGGLE: 'TASK/TOGGLE',
   GET_DETAIL: 'TASK/GET_DETAIL',
+  SAVE_LIST: 'TASK/SAVE_LIST',
 } as const;
 export type TodoActionType =
   (typeof TodoActionType)[keyof typeof TodoActionType];
 
-export interface IAddTaskAction extends IActionBase<{task: TTodo}> {
+export interface IAddTaskAction extends IActionBase<{task: TTask}> {
   type: typeof TodoActionType.ADD;
 }
 export interface IEditTaskAction
-  extends IActionBase<{id: TTodo['id']; task: Partial<TTodo>}> {
+  extends IActionBase<{id: TTask['id']; task: Partial<TTask>}> {
   type: typeof TodoActionType.EDIT;
 }
-export interface IRemoveTaskAction extends IActionBase<{id: TTodo['id']}> {
+export interface IRemoveTaskAction extends IActionBase<{id: TTask['id']}> {
   type: typeof TodoActionType.REMOVE;
 }
 export interface IGetListTaskAction extends IActionBase<{}> {
   type: typeof TodoActionType.GET_LIST;
 }
+export interface ISaveListTaskAction extends IActionBase<TTask[]> {
+  type: typeof TodoActionType.SAVE_LIST;
+}
 export interface IToggleTaskStatusAction
-  extends IActionBase<{id: TTodo['id']}> {
+  extends IActionBase<{id: TTask['id']}> {
   type: typeof TodoActionType.TOGGLE;
 }
-export interface IGetDetailTaskAction extends IActionBase<{id: TTodo['id']}> {
+export interface IGetDetailTaskAction extends IActionBase<{id: TTask['id']}> {
   type: typeof TodoActionType.GET_DETAIL;
 }
+
 export type ITaskAction =
   | IAddTaskAction
   | IEditTaskAction
   | IRemoveTaskAction
   | IGetListTaskAction
   | IToggleTaskStatusAction
-  | IGetDetailTaskAction;
+  | IGetDetailTaskAction
+  | ISaveListTaskAction;

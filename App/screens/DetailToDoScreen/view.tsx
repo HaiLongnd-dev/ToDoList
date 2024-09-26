@@ -1,10 +1,10 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import styles from './style';
-import {TTodo} from '../../Types/Todo';
+import {TTask} from '../../Types/Todo';
 import Navigator from '../../navigation/NavigationService';
 export interface DetailToDoScreenViewProps {
-  item: TTodo;
+  item: TTask;
 }
 const DetailTodoScreenView = ({item}: DetailToDoScreenViewProps) => {
   return (

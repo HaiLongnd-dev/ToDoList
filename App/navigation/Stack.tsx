@@ -10,7 +10,7 @@ import DeleteToDoScreen from '../screens/DeleteToDoScreen';
 import SCREEN_NAME from './ScreenName';
 import DetailToDoScreen from '../screens/DetailToDoScreen';
 import Navigator from './NavigationService';
-import {TTodo} from '../Types/Todo';
+import {TTask} from '../Types/Todo';
 
 export type StackParamList = {
   ADD_TASK_SCREEN: undefined;
@@ -23,10 +23,10 @@ export interface NavigationStackParamList
   extends Record<string, object | undefined> {
   ROOT: NavigatorScreenParams<StackParamList>;
   DETAIL_TASK_SCREEN: {
-    task: TTodo;
+    task: TTask;
   };
   EDIT_TASK_SCREEN: {
-    task: TTodo;
+    task: TTask;
   };
 }
 

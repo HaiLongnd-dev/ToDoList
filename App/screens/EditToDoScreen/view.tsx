@@ -7,10 +7,10 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import styles from './style';
-import {TTodo} from '../../Types/Todo';
+import {TTask} from '../../Types/Todo';
 import Navigator from '../../navigation/NavigationService';
 interface ListToDoScreenViewProps {
-  item: TTodo;
+  item: TTask;
 }
 const EditTodoScreenView = ({item}: ListToDoScreenViewProps) => {
   const [title, setTitle] = useState(item.title);
