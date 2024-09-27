@@ -47,10 +47,7 @@ const ListToDoScreen = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const callback: TCallback = value => {
-      console.log('============valueee============', value);
-    };
-    dispatch(getListTaskAction(callback));
+    dispatch(getListTaskAction());
   }, [dispatch]);
   return <ListToDoScreenView data={listTask} />;
 };

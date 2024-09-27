@@ -68,7 +68,7 @@ class HTTP {
 
     // Response interceptor
     api.interceptors.response.use(
-      (response: AxiosResponse) => response,
+      (response: AxiosResponse) => response.data,
       (error: any) => {
         const {code, message} = error.response?.data || {};
         if (code && this.exceptionCodes.includes(code)) {

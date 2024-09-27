@@ -2,6 +2,7 @@ import {TTask} from '../../Types/Todo';
 import {TCallback} from './types/actionTypeBase';
 import {
   IAddTaskAction,
+  IAddTaskActionSuccess,
   IEditTaskAction,
   IGetDetailTaskAction,
   IGetListTaskAction,
@@ -15,6 +16,14 @@ export const addTaskAction = (task: TTask): IAddTaskAction => ({
   type: TodoActionType.ADD,
   payload: {params: {task}},
 });
+export const addTaskActionSuccess = (task: TTask): IAddTaskActionSuccess => {
+  console.log('=====task=====',task);
+
+  return {
+    type: TodoActionType.ADD_SUCCESS,
+    payload: {params: {task}},
+  };
+};
 export const editTaskAction = (
   id: TTask['id'],
   task: Partial<TTask>,
@@ -26,10 +35,9 @@ export const removeTaskAction = (id: TTask['id']): IRemoveTaskAction => ({
   type: TodoActionType.REMOVE,
   payload: {params: {id}},
 });
-export const getListTaskAction = (callback: TCallback): IGetListTaskAction => {
+export const getListTaskAction = (): IGetListTaskAction => {
   return {
     type: TodoActionType.GET_LIST,
-    payload: {callback},
   };
 };
 export const saveListTaskAction = (tasks: TTask[]): ISaveListTaskAction => {

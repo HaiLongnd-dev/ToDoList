@@ -6,7 +6,9 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
 import {persistor, store} from './redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
+import NativeDevSettings from 'react-native/Libraries/NativeModules/specs/NativeDevSettings';
 const Index = () => {
+  
   return (
     // <SafeAreaProvider>
     <Provider store={store}>

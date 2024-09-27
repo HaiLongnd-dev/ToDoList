@@ -8,11 +8,25 @@ import {
 import React, {useState} from 'react';
 import styles from './style';
 import {useNavigation} from '@react-navigation/native';
+import {TTask} from '../../Types/Todo';
+interface AddTodoScreenViewProps {
+  addTask: (task: TTask) => void;
+}
 
-const AddTodoScreenView = () => {
+const AddTodoScreenView = ({addTask}: AddTodoScreenViewProps) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const navigation = useNavigation();
+  const handleAddTask = () => {
+    if (title === '' || description === '') {
+      return;
+    }
+    let task: TTask = {
+      title,
+      description,
+    };
+    addTask(task);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -44,7 +58,7 @@ const AddTodoScreenView = () => {
           placeholder="Enter task description"
         />
 
-        <TouchableOpacity style={styles.addBtn}>
+        <TouchableOpacity style={styles.addBtn} onPress={handleAddTask}>
           <Text style={[styles.text, styles.fontBtn]}>Add Task</Text>
         </TouchableOpacity>
       </View>

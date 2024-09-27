@@ -1,8 +1,8 @@
 export type TTask = {
-  id: string;
-  createdAt: string;
+  id?: string;
+  createdAt?: string;
   description: string;
-  isDone: boolean;
+  isDone?: boolean;
   title: string;
-  updatedAt: string;
+  updatedAt?: string;
 };

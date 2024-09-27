@@ -14,7 +14,9 @@ export default function taskReducer(
       return {
         ...state,
       };
-    case actions.TodoActionType.ADD: {
+    case actions.TodoActionType.ADD_SUCCESS: {
+      console.log('reducer', action.payload.params);
+
       return {
         ...state,
         tasks: [...state.tasks, action.payload?.params.task],
@@ -37,11 +39,11 @@ export default function taskReducer(
           task => task.id !== action.payload?.params?.id,
         ),
       };
-      case actions.TodoActionType.SAVE_LIST:
-        return{
-          ...state,
-          tasks:[...action.payload.params]
-        }
+    case actions.TodoActionType.SAVE_LIST:
+      return {
+        ...state,
+        tasks: [...action.payload.params],
+      };
     default:
       return state;
   }

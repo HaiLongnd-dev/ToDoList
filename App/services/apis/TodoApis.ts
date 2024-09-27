@@ -10,8 +10,6 @@ import {
 import http from '../http';
 
 export const getListAllTodoApi = (): Promise<IResponseGetAllTodoApi> => {
-  console.log('run4');
-
   return http.get(
     'https://api.freeapi.app/api/v1/todos?query=reactjs&complete=false',
   );
@@ -31,10 +29,11 @@ export const updateTodoByIdApi = (
 ): Promise<IResponseUpdateTodoByIdApi> => {
   return http.put(`https://api.freeapi.app/api/v1/todos/${taskId}`);
 };
-export const addTodoByIdApi = (
-  taskId: TTask['id'],
-): Promise<IResponseAddTodoApi> => {
-  return http.post(`https://api.freeapi.app/api/v1/todos/${taskId}`);
+export const addTodoByIdApi = (task: TTask): Promise<IResponseAddTodoApi> => {
+  const {title, description} = task;
+  return http.post(`https://api.freeapi.app/api/v1/todos`, {
+    params: {title, description},
+  });
 };
 export const toggleTodoStatusByIdApi = (
   taskId: TTask['id'],
