@@ -23,13 +23,7 @@ export const addTaskActionSuccess = (task: TTask): IAddTaskActionSuccess => {
     payload: {params: {task}},
   };
 };
-export const editTaskAction = (
-  id: TTask['id'],
-  task: Partial<TTask>,
-): IEditTaskAction => ({
-  type: TodoActionType.EDIT,
-  payload: {params: {id, task}},
-});
+
 export const removeTaskAction = (id: TTask['id']): IRemoveTaskAction => ({
   type: TodoActionType.REMOVE,
   payload: {params: {id}},
@@ -60,4 +54,11 @@ export const toggleTaskStatusSuccessAction = (
 ): IToggleTaskStatusSuccessAction => ({
   type: TodoActionType.TOGGLE_SUCCESS,
   payload: {params: {task}},
+});
+export const editTaskAction = (
+  id: TTask['id'],
+  task: Partial<TTask>,
+): IEditTaskAction => ({
+  type: TodoActionType.EDIT,
+  payload: {params: {id, task}},
 });

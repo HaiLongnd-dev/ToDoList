@@ -11,12 +11,12 @@ import rootSagas from '../sagas';
 const bindMiddleware = middleware => applyMiddleware(...middleware);
 
 /**
- * Redux Persist Configuration
+ * Redux Persist Configuration 
  */
 const persistConfig = { 
   key: 'root',
   storage: AsyncStorage,
-  whitelist: [],
+  whitelist: ['tasks'],
   version: 1,
   stateReconciler: autoMergeLevel2,
 };

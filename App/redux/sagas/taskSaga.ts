@@ -2,11 +2,15 @@ import {all, call, put, takeLatest} from 'redux-saga/effects';
 import {TTask} from '../../Types/Todo';
 import {
   addTodoByIdApi,
+  deleteTodoByIdApi,
   getListAllTodoApi,
   toggleTodoStatusByIdApi,
+  updateTodoByIdApi,
 } from '../../services/apis/TodoApis';
 import {
   IAddTaskAction,
+  IEditTaskAction,
+  IRemoveTaskAction,
   IToggleTaskStatusAction,
   TodoActionType,
 } from '../actions/types/todoActionType';
@@ -48,6 +52,13 @@ function* toggleTaskStatusSaga(action: IToggleTaskStatusAction) {
 
   yield put(toggleTaskStatusSuccessAction(updatedTask));
 }
+function* deleteTaskSaga(action: IRemoveTaskAction) {
+  const {id} = action.payload.params;
+  const response: {data: {}} = yield call(deleteTodoByIdApi, id);
+}
+function* watchDeleteTask() {
+  yield takeLatest(TodoActionType.REMOVE, deleteTaskSaga);
+}
 function* watchToggleTaskStatus() {
   yield takeLatest(TodoActionType.TOGGLE, toggleTaskStatusSaga);
 }
@@ -58,5 +69,10 @@ function* watchGetListTask() {
   yield takeLatest(TodoActionType.GET_LIST, getListTaskSaga);
 }
 export default function* taskSagas() {
-  yield all([watchGetListTask(), watchAddTask(), watchToggleTaskStatus()]);
+  yield all([
+    watchGetListTask(),
+    watchAddTask(),
+    watchToggleTaskStatus(),
+    watchDeleteTask(),
+  ]);
 }

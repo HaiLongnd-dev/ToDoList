@@ -8,14 +8,19 @@ import SCREEN_NAME from '../../navigation/ScreenName';
 export interface ItemComponentViewProps {
   item: TTask;
   toggleTaskStatus: (task: TTask) => void;
+  deleteTask: (id: TTask['id']) => void;
 }
 
 const ItemComponentView = ({
   item,
   toggleTaskStatus,
+  deleteTask,
 }: ItemComponentViewProps) => {
   const handleToggleStatus = () => {
     toggleTaskStatus(item);
+  };
+  const handleDeleteTask = () => {
+    deleteTask(item.id);
   };
   return (
     <View style={styles.container}>
@@ -57,7 +62,9 @@ const ItemComponentView = ({
           }}>
           <Text style={styles.buttonText}>Edit</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.deleteButton}>
+        <TouchableOpacity
+          style={styles.deleteButton}
+          onPress={handleDeleteTask}>
           <Text style={styles.buttonText}>Delete</Text>
         </TouchableOpacity>
       </View>

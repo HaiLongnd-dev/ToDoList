@@ -3,10 +3,19 @@ import React from 'react';
 import styles from './style';
 import {TTask} from '../../Types/Todo';
 import Navigator from '../../navigation/NavigationService';
+import SCREEN_NAME from '../../navigation/ScreenName';
+
 export interface DetailToDoScreenViewProps {
   item: TTask;
+  deleteTask: (id: TTask['id']) => void;
 }
-const DetailTodoScreenView = ({item}: DetailToDoScreenViewProps) => {
+const DetailTodoScreenView = ({
+  item,
+  deleteTask,
+}: DetailToDoScreenViewProps) => {
+  const handleDeleteTask = () => {
+    deleteTask(item.id);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -41,10 +50,18 @@ const DetailTodoScreenView = ({item}: DetailToDoScreenViewProps) => {
         </View>
 
         <View style={styles.buttons}>
-          <TouchableOpacity style={styles.editButton}>
+          <TouchableOpacity
+            style={styles.editButton}
+            onPress={() => {
+              Navigator.navigateTo(SCREEN_NAME.MANUAL.EDIT_TASK_SCREEN, {
+                task: item,
+              });
+            }}>
             <Text style={styles.buttonText}>Edit</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.deleteButton}>
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={handleDeleteTask}>
             <Text style={styles.buttonText}>Delete</Text>
           </TouchableOpacity>
         </View>
