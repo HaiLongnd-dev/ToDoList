@@ -5,7 +5,7 @@ import taskReducer, { ITaskState } from './taskReducer';
 const rootPersistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['task'],
+  whitelist: [],
   timeout: 10000,
 };
 export interface IGlobalState {

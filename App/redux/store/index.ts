@@ -16,7 +16,7 @@ const bindMiddleware = middleware => applyMiddleware(...middleware);
 const persistConfig = { 
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['task'],
+  whitelist: [],
   version: 1,
   stateReconciler: autoMergeLevel2,
 };

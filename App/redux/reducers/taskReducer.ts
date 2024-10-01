@@ -14,12 +14,28 @@ export default function taskReducer(
       return {
         ...state,
       };
+    case actions.TodoActionType.SAVE_LIST:
+      return {
+        ...state,
+        tasks: [...action.payload.params],
+      };
     case actions.TodoActionType.ADD_SUCCESS: {
-      console.log('reducer', action.payload.params);
-
       return {
         ...state,
         tasks: [...state.tasks, action.payload?.params.task],
+      };
+    }
+    case actions.TodoActionType.TOGGLE_SUCCESS: {
+      return {
+        ...state,
+        tasks: state.tasks.map(task =>
+          task.id === action.payload
+            ? {
+                ...task,
+                isDone: !task.isDone,
+              }
+            : task,
+        ),
       };
     }
     case actions.TodoActionType.EDIT:
@@ -39,11 +55,7 @@ export default function taskReducer(
           task => task.id !== action.payload?.params?.id,
         ),
       };
-    case actions.TodoActionType.SAVE_LIST:
-      return {
-        ...state,
-        tasks: [...action.payload.params],
-      };
+
     default:
       return state;
   }

@@ -16,19 +16,35 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     padding: 10,
   },
-  content: {
+  inform: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 10,
   },
-  status: {
-    justifyContent: 'flex-start',
+  statusBar: {
+    paddingLeft: 5,
+    justifyContent: 'center',
     alignItems: 'center',
+    paddingTop:5
   },
+  status: {
+    fontSize: 13,
+    fontWeight: 'bold',
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+    borderRadius: 20,
+    color: '#fff',
+  },
+  doneStatus: {backgroundColor: 'green'},
+  doingStatus: {backgroundColor: 'red'},
+  left: {
+    flexDirection: 'row',
+  },
+  right: {},
   editButton: {
     backgroundColor: 'blue',
     paddingHorizontal: 50,
@@ -50,6 +66,20 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'OpenSans',
     color: 'black',
+  },
+  circleButton: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  innerCircle: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: '#007bff',
   },
 });
 export default styles;

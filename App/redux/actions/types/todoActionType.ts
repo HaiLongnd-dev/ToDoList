@@ -10,6 +10,7 @@ export const TodoActionType = {
   GET_DETAIL: 'TASK/GET_DETAIL',
   SAVE_LIST: 'TASK/SAVE_LIST',
   ADD_SUCCESS: 'ADD_SUCCESS',
+  TOGGLE_SUCCESS: 'TOGGLE_SUCCESS',
 } as const;
 export type TodoActionType =
   (typeof TodoActionType)[keyof typeof TodoActionType];
@@ -37,6 +38,10 @@ export interface IToggleTaskStatusAction
   extends IActionBase<{id: TTask['id']}> {
   type: typeof TodoActionType.TOGGLE;
 }
+export interface IToggleTaskStatusSuccessAction
+  extends IActionBase<{task: TTask}> {
+  type: typeof TodoActionType.TOGGLE_SUCCESS;
+}
 export interface IGetDetailTaskAction extends IActionBase<{id: TTask['id']}> {
   type: typeof TodoActionType.GET_DETAIL;
 }
@@ -47,6 +52,7 @@ export type ITaskAction =
   | IRemoveTaskAction
   | IGetListTaskAction
   | IToggleTaskStatusAction
+  | IToggleTaskStatusSuccessAction
   | IGetDetailTaskAction
   | ISaveListTaskAction
   | IAddTaskActionSuccess;

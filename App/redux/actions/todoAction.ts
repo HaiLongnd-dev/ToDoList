@@ -9,6 +9,7 @@ import {
   IRemoveTaskAction,
   ISaveListTaskAction,
   IToggleTaskStatusAction,
+  IToggleTaskStatusSuccessAction,
   TodoActionType,
 } from './types/todoActionType';
 
@@ -17,8 +18,6 @@ export const addTaskAction = (task: TTask): IAddTaskAction => ({
   payload: {params: {task}},
 });
 export const addTaskActionSuccess = (task: TTask): IAddTaskActionSuccess => {
-  console.log('=====task=====',task);
-
   return {
     type: TodoActionType.ADD_SUCCESS,
     payload: {params: {task}},
@@ -55,4 +54,10 @@ export const toggleTaskStatusAction = (
 ): IToggleTaskStatusAction => ({
   type: TodoActionType.TOGGLE,
   payload: {params: {id}},
+});
+export const toggleTaskStatusSuccessAction = (
+  task: TTask,
+): IToggleTaskStatusSuccessAction => ({
+  type: TodoActionType.TOGGLE_SUCCESS,
+  payload: {params: {task}},
 });
