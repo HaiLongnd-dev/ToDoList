@@ -9,6 +9,8 @@ interface ListToDoScreenViewProps {
   data: TTask[];
 }
 const ListToDoScreenView = ({data}: ListToDoScreenViewProps) => {
+  console.log('data========',data);
+  
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>

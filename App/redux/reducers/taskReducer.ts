@@ -11,6 +11,8 @@ export default function taskReducer(
 ): ITaskState {
   switch (action.type) {
     case actions.TodoActionType.GET_LIST:
+      console.log('task======', action.payload);
+
       return {
         ...state,
       };

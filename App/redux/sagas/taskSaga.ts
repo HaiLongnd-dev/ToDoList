@@ -24,6 +24,9 @@ function* getListTaskSaga() {
   const response: {data: TTask[]} = yield call(getListAllTodoApi);
   put(saveListTaskAction(response.data));
 }
+function* watchGetListTask() {
+  yield takeLatest(TodoActionType.GET_LIST, getListTaskSaga);
+}
 function* addTaskSaga(action: IAddTaskAction) {
   const {task} = action.payload.params;
   const response: {data: any} = yield call(addTodoByIdApi, task);
@@ -37,6 +40,10 @@ function* addTaskSaga(action: IAddTaskAction) {
   };
 
   yield put(addTaskActionSuccess(createdTask));
+}
+
+function* watchAddTask() {
+  yield takeLatest(TodoActionType.ADD, addTaskSaga);
 }
 function* toggleTaskStatusSaga(action: IToggleTaskStatusAction) {
   const {id} = action.payload.params;
@@ -59,20 +66,23 @@ function* deleteTaskSaga(action: IRemoveTaskAction) {
 function* watchDeleteTask() {
   yield takeLatest(TodoActionType.REMOVE, deleteTaskSaga);
 }
+function* editTaskSaga(action: IEditTaskAction) {
+  const {id} = action.payload.params;
+  const response: {data: {}} = yield call(updateTodoByIdApi, id);
+}
+function* watchEditTask() {
+  yield takeLatest(TodoActionType.REMOVE, editTaskSaga);
+}
 function* watchToggleTaskStatus() {
   yield takeLatest(TodoActionType.TOGGLE, toggleTaskStatusSaga);
 }
-function* watchAddTask() {
-  yield takeLatest(TodoActionType.ADD, addTaskSaga);
-}
-function* watchGetListTask() {
-  yield takeLatest(TodoActionType.GET_LIST, getListTaskSaga);
-}
+
 export default function* taskSagas() {
   yield all([
     watchGetListTask(),
     watchAddTask(),
     watchToggleTaskStatus(),
     watchDeleteTask(),
+    watchEditTask(),
   ]);
 }

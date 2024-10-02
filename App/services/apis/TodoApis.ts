@@ -11,7 +11,7 @@ import http from '../http';
 
 export const getListAllTodoApi = (): Promise<IResponseGetAllTodoApi> => {
   return http.get(
-    'https://api.freeapi.app/api/v1/todos?query=reactjs&complete=false',
+    'https://api.freeapi.app/api/v1/todos',
   );
 };
 export const getTodoByIdApi = (

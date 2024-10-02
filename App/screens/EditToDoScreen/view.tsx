@@ -11,11 +11,18 @@ import {TTask} from '../../Types/Todo';
 import Navigator from '../../navigation/NavigationService';
 interface ListToDoScreenViewProps {
   item: TTask;
+  editTask: (id: TTask['id'], task: Partial<TTask>) => void;
 }
-const EditTodoScreenView = ({item}: ListToDoScreenViewProps) => {
+const EditTodoScreenView = ({item, editTask}: ListToDoScreenViewProps) => {
   const [title, setTitle] = useState(item.title);
   const [description, setDescription] = useState(item.description);
-
+  const handleEditTask = () => {
+    let task: TTask = {
+      title,
+      description,
+    };
+    editTask(item.id, task);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -47,7 +54,7 @@ const EditTodoScreenView = ({item}: ListToDoScreenViewProps) => {
           placeholder="Enter task description"
         />
 
-        <TouchableOpacity style={styles.addBtn}>
+        <TouchableOpacity style={styles.addBtn} onPress={handleEditTask}>
           <Text style={[styles.text, styles.fontBtn]}>Confirm Change</Text>
         </TouchableOpacity>
       </View>
